@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "DeLibSys_backend": {
+      "main": "src/DeLibSys_backend/main.mo",
+      "type": "motoko"
+    },
+    "DeLibSys_frontend": {
+      "dependencies": [
+        "DeLibSys_backend"
+      ],
+      "source": [
+        "src/DeLibSys_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "DeLibSys_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
