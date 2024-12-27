@@ -1,31 +1,25 @@
-import { useState } from 'react';
-import { DeLibSys_backend } from 'declarations/DeLibSys_backend';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AddBookPage from './pages/AddBookPage';
+import BorrowPage from './pages/BorrowPage';
+import MyBorrowedBooksPage from './pages/MyBorrowedBooksPage';
+import LendingHistoryPage from './pages/LendingHistoryPage';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    DeLibSys_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+const App = () => {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/add-book" element={<AddBookPage />} />
+          <Route path="/borrow/:bookId" element={<BorrowPage />} />
+          <Route path="/my-borrowed-books" element={<MyBorrowedBooksPage />} />
+          <Route path="/lending-history" element={<LendingHistoryPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
